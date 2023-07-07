@@ -1,10 +1,10 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<vector>
 #include<string>
 #include<tuple>
 #include<memory>
-#include<typeinfo> // библиотека для узнавания того, чем мы работаем
-#include<type_traits> // узнаём свойства типа данных, заставляет работать , не вызываяя методы.
+#include<typeinfo> // Р±РёР±Р»РёРѕС‚РµРєР° РґР»СЏ СѓР·РЅР°РІР°РЅРёСЏ С‚РѕРіРѕ, С‡РµРј РјС‹ СЂР°Р±РѕС‚Р°РµРј
+#include<type_traits> // СѓР·РЅР°С‘Рј СЃРІРѕР№СЃС‚РІР° С‚РёРїР° РґР°РЅРЅС‹С…, Р·Р°СЃС‚Р°РІР»СЏРµС‚ СЂР°Р±РѕС‚Р°С‚СЊ , РЅРµ РІС‹Р·С‹РІР°СЏСЏ РјРµС‚РѕРґС‹.
 
 
 
@@ -37,7 +37,7 @@ public:
 		var = 4;
 	}
 	void Print()const override{
-		std::cout << "Что-то\n";
+		std::cout << "Р§С‚Рѕ-С‚Рѕ\n";
 	}
 	void FOO() override {
 		std::cout << "bbbbb\n";
@@ -70,7 +70,7 @@ decltype(auto) get_at(Container& container, size_t index) //-> decltype(containe
 }
 
 template<typename T>
-void swap1(T& x, T& y) {  // функция swap
+void swap1(T& x, T& y) {  // С„СѓРЅРєС†РёСЏ swap
 	T t = std::move(x);
 	x = std::move(y);
 	y = std::move(t);
@@ -91,7 +91,7 @@ int main() {
 	dynamic_cast<fff&>(D);
 	const_cast<int&>(p);
 	reinterpret_cast<int&>(a);
-	volatile double b = 9;  // для хакеров ХР
+	volatile double b = 9;  // РґР»СЏ С…Р°РєРµСЂРѕРІ РҐР 
 
 	int v1 = 12; int v2 = 100;
 	std::cout << v1 << ' ' << v2 << '\n';
@@ -111,7 +111,7 @@ int main() {
 
 	A& ref = *pa;
 	A& ref2 = *pa3;
-	A& ref3 = *pa2;  // так нельзя делать.
+	A& ref3 = *pa2;  // С‚Р°Рє РЅРµР»СЊР·СЏ РґРµР»Р°С‚СЊ.
 	
 
 	std::string tmp = typeid(*pa).name();
@@ -120,14 +120,14 @@ int main() {
 	try {
 		tmp = typeid(*pa2).name();
 	}
-	catch (...) { std::cerr << "Жееесть!!!\n"; }
+	catch (...) { std::cerr << "Р–РµРµРµСЃС‚СЊ!!!\n"; }
 	tmp = typeid(*pa3).name();
 	std::cout << tmp << '\n';
 	tmp = typeid(ref).name();
 	std::cout << tmp << '\n';
 	tmp = typeid(ref2).name();
 	std::cout << tmp << '\n';
-	std::cout << std::is_abstract<A>();  // является ли класс абстрактным
+	std::cout << std::is_abstract<A>();  // СЏРІР»СЏРµС‚СЃСЏ Р»Рё РєР»Р°СЃСЃ Р°Р±СЃС‚СЂР°РєС‚РЅС‹Рј
 	//static_assert( std::is_abstract<A>());
 	bool res = std::is_abstract<A>();
 
@@ -136,10 +136,10 @@ int main() {
 
 	std::vector<A>arr2(10);
 
-	std::cout<<std::hash<int>()(9);  // кодирование числа огромным числом
-	// лучше сравнивать результаты хеш функций , чем строки.
+	std::cout<<std::hash<int>()(9);  // РєРѕРґРёСЂРѕРІР°РЅРёРµ С‡РёСЃР»Р° РѕРіСЂРѕРјРЅС‹Рј С‡РёСЃР»РѕРј
+	// Р»СѓС‡С€Рµ СЃСЂР°РІРЅРёРІР°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹ С…РµС€ С„СѓРЅРєС†РёР№ , С‡РµРј СЃС‚СЂРѕРєРё.
 	std::cout << '\n';
-	std::hash<std::string>()("bbbbbb") > std::hash<std::string>()("aaaaaa") ? (std::cout << "Больше ") : (std::cout << "Неа");
+	std::hash<std::string>()("bbbbbb") > std::hash<std::string>()("aaaaaa") ? (std::cout << "Р‘РѕР»СЊС€Рµ ") : (std::cout << "РќРµР°");
 	std::cout << "\n\n";
 
 	Bar(*pa);
